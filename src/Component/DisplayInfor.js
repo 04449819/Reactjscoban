@@ -11,6 +11,9 @@ class DisplayInfor extends React.Component {
     });
   }
 
+  HandleOclickDelete(id) {
+    this.props.HandleAddDelete(id);
+  }
   render() {
     const { hideshow } = this.state;
     const { listUsers } = this.props;
@@ -32,6 +35,9 @@ class DisplayInfor extends React.Component {
                   <div>My name is {user.name}</div>
                   <div>i'm {user.age}</div>
                   <div>i from to {user.address}</div>
+                  <button onClick={() => this.HandleOclickDelete(user.id)}>
+                    Xoa
+                  </button>
                   <hr />
                 </div>
               );

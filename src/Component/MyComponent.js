@@ -14,7 +14,14 @@ class MyComponent extends React.Component {
     console.log(">>>check user", user);
     console.log(">>>check state", this.state.listUsers);
     this.setState({
-      listUsers: [...this.state.listUsers, user],
+      listUsers: [user, ...this.state.listUsers],
+    });
+  };
+
+  HandleAddDelete = (userID) => {
+    // console.log(">>>check user", userID);
+    this.setState({
+      listUsers: this.state.listUsers.filter((item) => item.id !== userID),
     });
   };
   render() {
@@ -23,7 +30,10 @@ class MyComponent extends React.Component {
       <>
         <UserInfor HandleAdd={this.HandleAdd} />
         <br /> <br />
-        <DisplayInfor listUsers={listUsers} />
+        <DisplayInfor
+          listUsers={listUsers}
+          HandleAddDelete={this.HandleAddDelete}
+        />
       </>
     );
   }
