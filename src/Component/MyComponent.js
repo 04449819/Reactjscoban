@@ -6,14 +6,22 @@ class MyComponent extends React.Component {
     listUsers: [
       { id: 1, name: "Nguyen Van A", age: 25, address: "Ha Noi" },
       { id: 2, name: "Nguyen Van B", age: 27, address: "Ha Nam" },
-      { id: 3, name: "Nguyen Van C", age: 29, address: "Ha Tinh" },
+      { id: 3, name: "Nguyen Van C", age: 31, address: "Ha Tinh" },
     ],
+  };
+
+  HandleAdd = (user) => {
+    console.log(">>>check user", user);
+    console.log(">>>check state", this.state.listUsers);
+    this.setState({
+      listUsers: [...this.state.listUsers, user],
+    });
   };
   render() {
     const { listUsers } = this.state;
     return (
       <>
-        <UserInfor />
+        <UserInfor HandleAdd={this.HandleAdd} />
         <br /> <br />
         <DisplayInfor listUsers={listUsers} />
       </>

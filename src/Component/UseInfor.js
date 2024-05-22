@@ -2,14 +2,20 @@ import React from "react";
 
 class UserInfor extends React.Component {
   state = {
-    name: "Nguyen Van Kien",
-    age: 22,
-    address: "Ha Noi",
+    name: "",
+    age: 0,
+    address: "",
   };
 
   HandleOnsubmit(event) {
     event.preventDefault(); // preventDefault ngan hanh dong load lai trang
-    console.log(this.state);
+    let user = {
+      id: Math.floor(Math.random() * 1000),
+      name: this.state.name,
+      address: this.state.address,
+      age: this.state.age,
+    };
+    this.props.HandleAdd(user);
   }
 
   HandleOnchangeName(event) {
